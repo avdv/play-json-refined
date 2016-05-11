@@ -24,3 +24,11 @@ headers := Map(
 // TODO: Use with next sbt-headers version
 // import de.heikoseeberger.sbtheader.CommentStyleMapping._
 //headers := createFrom(Apache2_0, "2015", "Heiko Seeberger")
+
+val validateCommands = List(
+  "clean",
+  "scalafmtTest",
+  "compile", "test:compile",
+  "test"
+)
+addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
