@@ -28,7 +28,7 @@ headers := Map(
 
 val validateCommands = List(
   "clean",
-  "scalafmtTest",
+  "scalafmtTest", "test:scalafmtTest",
   "compile", "test:compile",
   "test"
 )
