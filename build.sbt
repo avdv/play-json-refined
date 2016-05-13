@@ -26,6 +26,14 @@ headers := Map(
 // import de.heikoseeberger.sbtheader.CommentStyleMapping._
 //headers := createFrom(Apache2_0, "2015", "Heiko Seeberger")
 
+initialCommands := s"""
+import eu.timepit.refined._
+import eu.timepit.refined.auto._
+import eu.timepit.refined.api._
+import play.api.libs.json._
+import com.lunaryorn.refined.play.json._
+"""
+
 val validateCommands = List(
   "clean",
   "scalafmtTest", "test:scalafmtTest",
