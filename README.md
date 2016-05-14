@@ -1,6 +1,8 @@
 # play-json-refined #
 
-[![Build Status](https://travis-ci.org/lunaryorn/play-json-refined.svg?branch=master)](https://travis-ci.org/lunaryorn/play-json-refined)
+[![Apache 2.0 license](https://img.shields.io/github/license/lunaryorn/play-json-refined.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Bintray](https://img.shields.io/bintray/v/lunaryorn/maven/play-json-refined.svg?maxAge=2592000)](https://bintray.com/lunaryorn/maven/play-json-refined/_latestVersion)
+[![Travis branch](https://img.shields.io/travis/lunaryorn/play-json-refined/master.svg)](https://travis-ci.org/lunaryorn/play-json-refined)
 
 [Play JSON][] Reads/Writes instances for [refined][] types.  In other words,
 this library let’s you convert refined types to and from JSON.
