@@ -49,3 +49,9 @@ val validateCommands = List(
   "test"
 )
 addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
+
+// Publish and release configuration
+publishMavenStyle := true
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
+releaseTagComment := s"play-json-refined ${(version in ThisBuild).value}"
+releaseCommitMessage := s"Release ${(version in ThisBuild).value}"
