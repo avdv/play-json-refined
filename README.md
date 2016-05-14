@@ -12,6 +12,35 @@ this library let’s you convert refined types to and from JSON.
 
 This library isn’t yet released.
 
+## Usage ##
+
+``` scala
+import eu.timepit.refined._
+import eu.timepit.refined.auto._
+import eu.timepit.refined.api._
+import play.api.libs.json._
+import com.lunaryorn.refined.play.json._
+Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_65).
+Type in expressions for evaluation. Or try :help.
+
+scala> type PosInt = Int Refined numeric.Positive
+defined type alias PosInt
+
+scala> val foo : PosInt = 42
+foo: PosInt = 42
+
+scala> Json.toJson(foo)
+res0: play.api.libs.json.JsValue = 42
+
+scala> Json.fromJson[PosInt](JsNumber(42))
+res3: play.api.libs.json.JsResult[PosInt] = JsSuccess(42,)
+
+scala> Json.fromJson[PosInt](JsNumber(-42))
+res4: play.api.libs.json.JsResult[PosInt] =
+JsError(List((,List(ValidationError(List(Predicate failed: (-42 >
+0).),WrappedArray())))))
+```
+
 ## License ##
 
 Copyright 2016 Sebastian Wiesner
