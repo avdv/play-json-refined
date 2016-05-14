@@ -7,6 +7,14 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
 scmInfo := Some(ScmInfo(homepage.value.get,
   s"scm:git:https://github.com/lunaryorn/play-json-refined.git",
   Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")))
+pomExtra :=
+    <developers>
+      <developer>
+        <id>lunaryorn</id>
+        <name>Sebastian Wiesner</name>
+        <url>http://www.lunaryorn.com</url>
+      </developer>
+    </developers>
 
 // Build settings
 scalaVersion := "2.11.8"
