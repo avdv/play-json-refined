@@ -51,7 +51,36 @@ val validateCommands = List(
 addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
 
 // Publish and release configuration
+lazy val updateVersionInReadme: ReleaseStep = { st: State =>
+  val newVersion = Project.extract(st).get(version)
+
+  val pattern = "\"com.lunaryorn\" %% \"play-json-refined\" % \"([^\"]+)\"".r
+  val readme = file("README.md")
+  val content = IO.read(readme)
+  pattern.findFirstMatchIn(content).foreach { m =>
+    IO.write(readme, m.before(1) + newVersion + m.after(1))
+  }
+
+  Seq("git", "add", readme.getAbsolutePath()) !! st.log
+
+  st
+}
+
+import ReleaseTransformations._
 publishMavenStyle := true
 releasePublishArtifactsAction := PgpKeys.publishSigned.value
 releaseTagComment := s"play-json-refined ${(version in ThisBuild).value}"
 releaseCommitMessage := s"Release ${(version in ThisBuild).value}"
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runTest,
+  setReleaseVersion,
+  updateVersionInReadme
+  commitReleaseVersion,
+  tagRelease,
+  publishArtifacts,
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
