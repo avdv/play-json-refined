@@ -1,7 +1,7 @@
 # play-json-refined #
 
 [![Apache 2.0 license](https://img.shields.io/github/license/lunaryorn/play-json-refined.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Bintray](https://img.shields.io/bintray/v/lunaryorn/maven/play-json-refined.svg?maxAge=2592000)](https://bintray.com/lunaryorn/maven/play-json-refined/_latestVersion)
+[![Download](https://img.shields.io/maven-central/v/com.lunaryorn/play-json-refined_2.11.svg)][maven]
 [![Travis branch](https://img.shields.io/travis/lunaryorn/play-json-refined/master.svg)](https://travis-ci.org/lunaryorn/play-json-refined)
 
 [Play JSON][] Reads/Writes instances for [refined][] types.  In other words,
@@ -9,10 +9,18 @@ this library let’s you convert refined types to and from JSON.
 
 [Play JSON]: https://www.playframework.com/documentation/2.5.x/ScalaJson
 [refined]: https://github.com/fthomas/refined
+[maven]: http://search.maven.org/#search%7Cga%7C1%7Ccom.lunaryorn.play-json-refined
 
 ## Installation ##
 
-This library isn’t yet released.
+Add the following to your `build.sbt`:
+
+``` scala
+libraryDependencies += "com.lunaryorn" %% "play-json-refined" % "0.1"
+```
+
+`play-json-refined` is available for Scala 2.11 and Play 2.5.  Sorry, no Play
+2.4.
 
 ## Usage ##
 
