@@ -76,7 +76,7 @@ releaseProcess := Seq[ReleaseStep](
   inquireVersions,
   runTest,
   setReleaseVersion,
-  updateVersionInReadme
+  updateVersionInReadme,
   commitReleaseVersion,
   tagRelease,
   publishArtifacts,
