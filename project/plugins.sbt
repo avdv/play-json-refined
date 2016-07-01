@@ -1,8 +1,8 @@
 // Automate file headers
-addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.5.1")
+addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.6.0")
 
 // Formatting
-addSbtPlugin("com.geirsson" %% "sbt-scalafmt" % "0.2.6")
+addSbtPlugin("com.geirsson" %% "sbt-scalafmt" % "0.2.10")
 
 // Bintray publishing
 addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")

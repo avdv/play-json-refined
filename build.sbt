@@ -51,12 +51,8 @@ scalacOptions ++= Seq(
 // Automatically update file headers
 enablePlugins(AutomateHeaderPlugin)
 import de.heikoseeberger.sbtheader.license.Apache2_0
-headers := Map(
-  "scala" -> Apache2_0("2016", "Sebastian Wiesner")
-)
-// TODO: Use with next sbt-headers version
-// import de.heikoseeberger.sbtheader.CommentStyleMapping._
-//headers := createFrom(Apache2_0, "2015", "Heiko Seeberger")
+import de.heikoseeberger.sbtheader.CommentStyleMapping._
+headers := createFrom(Apache2_0, "2016", "Sebastian Wiesner")
 
 initialCommands := s"""
 import eu.timepit.refined._
