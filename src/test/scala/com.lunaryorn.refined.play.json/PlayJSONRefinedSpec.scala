@@ -34,7 +34,7 @@ class PlayJsonSpec extends Properties("PlayJSONReadsWrites") {
 
   property("reads failure") = secure {
     Json.fromJson[PosInt](JsNumber(-42)) ?=
-    JsError("Predicate failed: (-42 > 0).")
+      JsError("Predicate failed: (-42 > 0).")
   }
 
   property("writes success") = secure {
