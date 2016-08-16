@@ -33,7 +33,7 @@ package object json {
       validate: Validate[T, P]
   ): Reads[F[T, P]] =
     Reads(jsValue =>
-          readsT.reads(jsValue).flatMap { valueT =>
+      readsT.reads(jsValue).flatMap { valueT =>
         reftype.refine[P](valueT) match {
           case Right(valueP) => JsSuccess(valueP)
           case Left(error) => JsError(error)
