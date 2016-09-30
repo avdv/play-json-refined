@@ -4,11 +4,12 @@ description := "Play JSON Reads/Writes for refined types"
 homepage := Some(url(s"https://github.com/lunaryorn/play-json-refined"))
 startYear := Some(2016)
 licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
-scmInfo := Some(ScmInfo(homepage.value.get,
-  s"scm:git:https://github.com/lunaryorn/play-json-refined.git",
-  Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")))
+scmInfo := Some(
+  ScmInfo(homepage.value.get,
+          s"scm:git:https://github.com/lunaryorn/play-json-refined.git",
+          Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")))
 pomExtra :=
-    <developers>
+  <developers>
       <developer>
         <id>lunaryorn</id>
         <name>Sebastian Wiesner</name>
@@ -25,7 +26,8 @@ libraryDependencies ++= Seq(
 )
 scalacOptions ++= Seq(
   // Code encoding
-  "-encoding", "UTF-8",
+  "-encoding",
+  "UTF-8",
   // Deprecation warnings
   "-deprecation",
   // Warnings about features that should be imported explicitly
@@ -64,8 +66,10 @@ import com.lunaryorn.refined.play.json._
 
 val validateCommands = List(
   "clean",
-  "scalafmtTest", "test:scalafmtTest",
-  "compile", "test:compile",
+  "scalafmtTest",
+  "test:scalafmtTest",
+  "compile",
+  "test:compile",
   "test"
 )
 addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
