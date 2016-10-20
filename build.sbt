@@ -21,7 +21,7 @@ pomExtra :=
 scalaVersion := "2.11.8"
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-json" % "2.5.0",
-  "eu.timepit" %% "refined" % "0.5.0",
+  "eu.timepit" %% "refined" % "0.6.0",
   "org.scalacheck" %% "scalacheck" % "1.13.0" % "test"
 )
 scalacOptions ++= Seq(
