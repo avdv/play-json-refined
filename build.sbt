@@ -1,12 +1,12 @@
 name := "play-json-refined"
 organization := "com.lunaryorn"
 description := "Play JSON Reads/Writes for refined types"
-homepage := Some(url(s"https://github.com/lunaryorn/play-json-refined"))
+homepage := Some(url("https://github.com/lunaryorn/play-json-refined"))
 startYear := Some(2016)
 licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
 scmInfo := Some(
-  ScmInfo(homepage.value.get,
-          s"scm:git:https://github.com/lunaryorn/play-json-refined.git",
+  ScmInfo(url("https://github.com/lunaryorn/play-json-refined"),
+          "scm:git:https://github.com/lunaryorn/play-json-refined.git",
           Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")))
 pomExtra :=
   <developers>
