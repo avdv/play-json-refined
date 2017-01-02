@@ -67,7 +67,6 @@ import com.lunaryorn.refined.play.json._
 val validateCommands = List(
   "clean",
   "scalafmtTest",
-  "test:scalafmtTest",
   "compile",
   "test:compile",
   "test"
