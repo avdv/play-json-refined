@@ -54,7 +54,7 @@ scalacOptions ++= Seq(
 enablePlugins(AutomateHeaderPlugin)
 import de.heikoseeberger.sbtheader.license.Apache2_0
 import de.heikoseeberger.sbtheader.CommentStyleMapping._
-headers := createFrom(Apache2_0, "2016", "Sebastian Wiesner")
+headers := createFrom(Apache2_0, "2016-2017", "Sebastian Wiesner")
 
 initialCommands := s"""
 import eu.timepit.refined._
