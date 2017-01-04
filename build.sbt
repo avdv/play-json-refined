@@ -99,9 +99,9 @@ lazy val root = (project in file("."))
           password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
         } yield
           Credentials("Sonatype Nexus Repository Manager",
-            "oss.sonatype.org",
-            username,
-            password)).toSeq,
+                      "oss.sonatype.org",
+                      username,
+                      password)).toSeq,
         // Scala versions (we ignore 2.12 for now, because Play doesn't support
         // it yet)
         scalaVersion := "2.11.8",
