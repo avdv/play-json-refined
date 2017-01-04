@@ -16,7 +16,7 @@ this library let’s you convert refined types to and from JSON.
 Add the following to your `build.sbt`:
 
 ``` scala
-libraryDependencies += "com.lunaryorn" %% "play-json-refined" % "0.2"
+libraryDependencies += "com.lunaryorn" %% "play-json-refined" % "0.3"
 ```
 
 `play-json-refined` is available for Scala 2.11 and Play 2.5.  Sorry, no Play
