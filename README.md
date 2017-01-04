@@ -1,7 +1,6 @@
 # play-json-refined #
 
 [![Apache 2.0 license](https://img.shields.io/github/license/lunaryorn/play-json-refined.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Latest version](https://index.scala-lang.org/lunaryorn/play-json-refined/play-json-refined/latest.svg)](https://index.scala-lang.org/lunaryorn/play-json-refined/play-json-refined)
 [![Travis master build status](https://img.shields.io/travis/lunaryorn/play-json-refined/master.svg)](https://travis-ci.org/lunaryorn/play-json-refined)
 
 [Play JSON][] Reads/Writes instances for [refined][] types.  In other words,
