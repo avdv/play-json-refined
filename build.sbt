@@ -2,6 +2,16 @@ import de.heikoseeberger.sbtheader.license.Apache2_0
 import de.heikoseeberger.sbtheader.CommentStyleMapping._
 import ReleaseTransformations._
 
+// Do-it-all command for Travis CI
+val validateCommands = List(
+  "clean",
+  "scalafmtTest",
+  "compile",
+  "test:compile",
+  "test"
+)
+addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
+
 // Additional release step to update our README
 lazy val updateVersionInReadme: ReleaseStep = { st: State =>
   val newVersion = Project.extract(st).get(version)
