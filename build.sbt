@@ -13,7 +13,7 @@ lazy val updateVersionInReadme: ReleaseStep = { st: State =>
     IO.write(readme, m.before(1) + newVersion + m.after(1))
   }
 
-  Seq("git", "add", readme.getAbsolutePath()) !! st.log
+  Seq("git", "add", readme.getAbsolutePath) !! st.log
 
   st
 }
@@ -35,13 +35,22 @@ lazy val root = (project in file("."))
           <url>http://www.lunaryorn.com</url>
         </developer>
       </developers>,
+    // Scaladex publishing
+    scaladexKeywords in Scaladex := Seq("json", "playframework", "refined"),
     // License headers
     headers := createFrom(Apache2_0, "2016-2017", "Sebastian Wiesner"),
     // Release configuration
     publishMavenStyle := true,
+    publishTo := {
+      val nexus = "https://oss.sonatype.org/"
+      if (isSnapshot.value)
+        Some("snapshots" at nexus + "content/repositories/snapshots")
+      else
+        Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    },
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     releaseTagComment := s"play-json-refined ${(version in ThisBuild).value}",
-    releaseCommitMessage := s"Release ${(version in ThisBuild).value}",
+    releaseCommitMessage := s"Bump version to ${(version in ThisBuild).value}",
     releaseProcess := Seq[ReleaseStep](
       checkSnapshotDependencies,
       inquireVersions,
@@ -51,9 +60,11 @@ lazy val root = (project in file("."))
       commitReleaseVersion,
       tagRelease,
       publishArtifacts,
+      releaseStepTask(publish in Scaladex),
       setNextVersion,
       commitNextVersion,
-      pushChanges
+      pushChanges,
+      releaseStepCommand("sonatypeRelease")
     ),
     // Dependencies
     libraryDependencies ++= Seq(
@@ -71,6 +82,16 @@ lazy val root = (project in file("."))
           "scm:git:https://github.com/lunaryorn/play-json-refined.git",
           Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")
         )),
+        // Credentials for Travis CI, see
+        // http://www.cakesolutions.net/teamblogs/publishing-artefacts-to-oss-sonatype-nexus-using-sbt-and-travis-ci
+        credentials ++= (for {
+          username <- Option(System.getenv().get("SONATYPE_USERNAME"))
+          password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
+        } yield
+          Credentials("Sonatype Nexus Repository Manager",
+            "oss.sonatype.org",
+            username,
+            password)).toSeq,
         // Scala versions (we ignore 2.12 for now, because Play doesn't support
         // it yet)
         scalaVersion := "2.11.8",

@@ -1,14 +1,11 @@
 // Automate file headers
 addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.6.0")
 
-// Formatting
+// Code formatting
 addSbtPlugin("com.geirsson" %% "sbt-scalafmt" % "0.5.1")
 
-// Bintray publishing
-addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")
-
-// Releasing
+// Plugins for releases
 addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.3")
-
-// GPG signing
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "1.1")
+addSbtPlugin("ch.epfl.scala.index" % "sbt-scaladex" % "0.1.3")
