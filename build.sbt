@@ -49,7 +49,8 @@ lazy val root = (project in file("."))
     scaladexKeywords in Scaladex := Seq("json", "playframework", "refined"),
     // License headers
     headers := createFrom(Apache2_0, "2016-2017", "Sebastian Wiesner"),
-    // Release configuration
+    // Release configuration: Publish signed artifacts to Maven Central
+    releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     publishMavenStyle := true,
     publishTo := {
       val nexus = "https://oss.sonatype.org/"
@@ -58,31 +59,13 @@ lazy val root = (project in file("."))
       else
         Some("releases" at nexus + "service/local/staging/deploy/maven2")
     },
-    releasePublishArtifactsAction := PgpKeys.publishSigned.value,
-    releaseTagComment := s"play-json-refined ${(version in ThisBuild).value}",
-    releaseCommitMessage := s"Bump version to ${(version in ThisBuild).value}",
-    releaseProcess := Seq[ReleaseStep](
-      checkSnapshotDependencies,
-      inquireVersions,
-      runTest,
-      setReleaseVersion,
-      updateVersionInReadme,
-      commitReleaseVersion,
-      tagRelease,
-      publishArtifacts,
-      releaseStepTask(publish in Scaladex),
-      setNextVersion,
-      commitNextVersion,
-      pushChanges,
-      releaseStepCommand("sonatypeRelease")
-    ),
     // Dependencies
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-json" % "2.5.0",
       "eu.timepit" %% "refined" % "0.6.0",
       "org.scalacheck" %% "scalacheck" % "1.13.0" % "test"
     ),
-    // Settings for this project and its subprojects
+    // Settings for the entire build
     inThisBuild(
       List(
         // General metadata
@@ -92,6 +75,24 @@ lazy val root = (project in file("."))
           "scm:git:https://github.com/lunaryorn/play-json-refined.git",
           Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")
         )),
+        // General release settings
+        releaseTagComment := s"play-json-refined ${version.value}",
+        releaseCommitMessage := s"Bump version to ${version.value}",
+        releaseProcess := Seq[ReleaseStep](
+          checkSnapshotDependencies,
+          inquireVersions,
+          runTest,
+          setReleaseVersion,
+          updateVersionInReadme,
+          commitReleaseVersion,
+          tagRelease,
+          publishArtifacts,
+          releaseStepTask(publish in Scaladex),
+          setNextVersion,
+          commitNextVersion,
+          pushChanges,
+          releaseStepCommand("sonatypeRelease")
+        ),
         // Credentials for Travis CI, see
         // http://www.cakesolutions.net/teamblogs/publishing-artefacts-to-oss-sonatype-nexus-using-sbt-and-travis-ci
         credentials ++= (for {
