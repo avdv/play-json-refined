@@ -5,9 +5,10 @@ import ReleaseTransformations._
 // Do-it-all command for Travis CI
 val validateCommands = List(
   "clean",
-  "scalafmtTest",
+  "checkHeaders",
   "compile",
   "test:compile",
+  "scalafmtTest",
   "test"
 )
 addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
