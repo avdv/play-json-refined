@@ -66,7 +66,8 @@ lazy val root = (project in file("."))
       "eu.timepit" %% "refined" % "0.6.0",
       "org.scalacheck" %% "scalacheck" % "1.13.0" % "test"
     ),
-    // Settings for the entire build
+    // Settings for the entire build.  We use sbt-travisci to get supported
+    // Scala versions from .travis.yml
     inThisBuild(
       List(
         // General metadata
@@ -104,9 +105,6 @@ lazy val root = (project in file("."))
                       "oss.sonatype.org",
                       username,
                       password)).toSeq,
-        // Scala versions (we ignore 2.12 for now, because Play doesn't support
-        // it yet)
-        scalaVersion := "2.11.8",
         // Build settings
         scalacOptions ++= Seq(
           // Code encoding
