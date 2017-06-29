@@ -38,14 +38,14 @@ lazy val root = (project in file("."))
     homepage := Some(url("https://github.com/lunaryorn/play-json-refined")),
     licenses += "Apache-2.0" -> url(
       "http://www.apache.org/licenses/LICENSE-2.0"),
-    pomExtra :=
-      <developers>
-        <developer>
-          <id>lunaryorn</id>
-          <name>Sebastian Wiesner</name>
-          <url>http://www.lunaryorn.com</url>
-        </developer>
-      </developers>,
+    developers := List(
+      Developer(
+        id="lunaryorn",
+        name="Sebastian Wiesner",
+        email="swiesner@lunaryorn.com",
+        url=url("http://www.lunaryorn.com")
+      )
+    ),
     // Scaladex publishing
     scaladexKeywords in Scaladex := Seq("json", "playframework", "refined"),
     // License headers
@@ -93,7 +93,7 @@ lazy val root = (project in file("."))
           commitReleaseVersion,
           tagRelease,
           publishArtifacts,
-          releaseStepTask(publish in Scaladex),
+          releaseStepCommand("scaladex:publish"),
           setNextVersion,
           commitNextVersion,
           pushChanges,
