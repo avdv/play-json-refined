@@ -53,13 +53,7 @@ lazy val root = (project in file("."))
     // Release configuration: Publish signed artifacts to Maven Central
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     publishMavenStyle := true,
-    publishTo := {
-      val nexus = "https://oss.sonatype.org/"
-      if (isSnapshot.value)
-        Some("snapshots" at nexus + "content/repositories/snapshots")
-      else
-        Some("releases" at nexus + "service/local/staging/deploy/maven2")
-    },
+    publishTo := Some(sonatypeDefaultResolver.value),
     // Dependencies
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-json" % "2.5.0",
