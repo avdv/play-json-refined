@@ -40,10 +40,10 @@ lazy val root = (project in file("."))
       "http://www.apache.org/licenses/LICENSE-2.0"),
     developers := List(
       Developer(
-        id="lunaryorn",
-        name="Sebastian Wiesner",
-        email="swiesner@lunaryorn.com",
-        url=url("http://www.lunaryorn.com")
+        id = "lunaryorn",
+        name = "Sebastian Wiesner",
+        email = "swiesner@lunaryorn.com",
+        url = url("http://www.lunaryorn.com")
       )
     ),
     // Scaladex publishing
