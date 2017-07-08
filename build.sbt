@@ -46,8 +46,6 @@ lazy val root = (project in file("."))
         url = url("http://www.lunaryorn.com")
       )
     ),
-    // Scaladex publishing
-    scaladexKeywords in Scaladex := Seq("json", "playframework", "refined"),
     // License headers
     headers := createFrom(Apache2_0, "2016-2017", "Sebastian Wiesner"),
     // Release configuration: Publish signed artifacts to Maven Central
@@ -87,7 +85,6 @@ lazy val root = (project in file("."))
           commitReleaseVersion,
           tagRelease,
           publishArtifacts,
-          releaseStepCommand("scaladex:publish"),
           setNextVersion,
           commitNextVersion,
           pushChanges,
