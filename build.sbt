@@ -55,11 +55,7 @@ lazy val root = (project in file("."))
     // Dependencies
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-json" % "2.5.0",
-      // Fix "Class scala.tools.nsc.Global not found - continuing with a stub."
-      // build failure by adding a provided dep on the scala-compiler, see
-      // https://github.com/fthomas/refined/issues/256
-      "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided,
-      "eu.timepit" %% "refined" % "0.7.0",
+      "eu.timepit" %% "refined" % "0.8.4",
       "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
     ),
     // Settings for the entire build.  We use sbt-travisci to get supported
