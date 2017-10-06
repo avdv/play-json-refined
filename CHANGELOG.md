@@ -10,6 +10,7 @@ and this project does **not** adhere to Semantic Versioning.
 - Support Scala 2.12 (<https://github.com/lunaryorn/play-json-refined/issues/4>)
 
 ### Changed
+- Update refine to 0.8.4 (<https://github.com/lunaryorn/play-json-refined/pull/3>)
 - Build with SBT 1.0
 - Build with Scala 2.11.11
 
