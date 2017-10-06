@@ -54,7 +54,8 @@ lazy val root = (project in file("."))
         organization := "com.lunaryorn",
         organizationName := "Sebastian Wiesner",
         homepage := Some(url("https://github.com/lunaryorn/play-json-refined")),
-        licenses += "Apache-2.0" -> url( "http://www.apache.org/licenses/LICENSE-2.0"),
+        licenses += "Apache-2.0" -> url(
+          "http://www.apache.org/licenses/LICENSE-2.0"),
         developers := List(
           Developer(
             id = "lunaryorn",

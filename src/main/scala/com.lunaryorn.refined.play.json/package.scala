@@ -36,7 +36,7 @@ package object json {
       readsT.reads(jsValue).flatMap { valueT =>
         reftype.refine[P](valueT) match {
           case Right(valueP) => JsSuccess(valueP)
-          case Left(error) => JsError(error)
+          case Left(error)   => JsError(error)
         }
     })
 }
