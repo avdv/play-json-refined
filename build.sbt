@@ -1,14 +1,15 @@
-import de.heikoseeberger.sbtheader.license.Apache2_0
-import de.heikoseeberger.sbtheader.CommentStyleMapping._
 import ReleaseTransformations._
 
 // Do-it-all command for Travis CI
 val validateCommands = List(
   "clean",
-  "checkHeaders",
+  "headerCheck",
+  "test:headerCheck",
   "compile",
   "test:compile",
-  "scalafmtTest",
+  "scalafmt::test",
+  "test:scalafmt::test",
+  "sbt:scalafmt::test",
   "test"
 )
 addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
@@ -35,19 +36,6 @@ lazy val root = (project in file("."))
     name := "play-json-refined",
     description := "Play JSON Reads/Writes for refined types",
     startYear := Some(2016),
-    homepage := Some(url("https://github.com/lunaryorn/play-json-refined")),
-    licenses += "Apache-2.0" -> url(
-      "http://www.apache.org/licenses/LICENSE-2.0"),
-    developers := List(
-      Developer(
-        id = "lunaryorn",
-        name = "Sebastian Wiesner",
-        email = "swiesner@lunaryorn.com",
-        url = url("http://www.lunaryorn.com")
-      )
-    ),
-    // License headers
-    headers := createFrom(Apache2_0, "2016-2017", "Sebastian Wiesner"),
     // Release configuration: Publish signed artifacts to Maven Central
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
     publishMavenStyle := true,
@@ -64,11 +52,23 @@ lazy val root = (project in file("."))
       List(
         // General metadata
         organization := "com.lunaryorn",
+        organizationName := "Sebastian Wiesner",
+        homepage := Some(url("https://github.com/lunaryorn/play-json-refined")),
+        licenses += "Apache-2.0" -> url( "http://www.apache.org/licenses/LICENSE-2.0"),
+        developers := List(
+          Developer(
+            id = "lunaryorn",
+            name = "Sebastian Wiesner",
+            email = "swiesner@lunaryorn.com",
+            url = url("http://www.lunaryorn.com")
+          )
+        ),
         scmInfo := Some(ScmInfo(
           url("https://github.com/lunaryorn/play-json-refined"),
           "scm:git:https://github.com/lunaryorn/play-json-refined.git",
           Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")
         )),
+        scalafmtVersion := "1.3.0",
         // General release settings
         releaseTagComment := s"play-json-refined ${version.value}",
         releaseCommitMessage := s"Bump version to ${version.value}",
