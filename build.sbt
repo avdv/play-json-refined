@@ -74,6 +74,7 @@ lazy val root = (project in file("."))
         )),
         scalafmtVersion := "1.3.0",
         // General release settings
+        releaseCrossBuild := true,
         releaseTagComment := s"play-json-refined ${version.value}",
         releaseCommitMessage := s"Bump version to ${version.value}",
         releaseProcess := Seq[ReleaseStep](
