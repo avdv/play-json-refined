@@ -22,8 +22,10 @@ lazy val updateVersionInReadme: ReleaseStep = { st: State =>
   val pattern = "\"com.lunaryorn\" %% \"play-json-refined\" % \"([^\"]+)\"".r
   val readme = file("README.md")
   val content = IO.read(readme)
-  pattern.findFirstMatchIn(content).foreach { m =>
-    IO.write(readme, m.before(1) + newVersion + m.after(1))
+  pattern.findFirstMatchIn(content) match {
+    case Some(m) => IO.write(readme, m.before(1) + newVersion + m.after(1))
+    case None =>
+      throw new IllegalStateException("Failed to find version in README")
   }
 
   Seq("git", "add", readme.getAbsolutePath) !! st.log
