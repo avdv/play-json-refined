@@ -7,6 +7,7 @@ and this project does **not** adhere to Semantic Versioning.
 ## [Unreleased]
 ### Changed
 - Build with SBT 1.0
+- Build with Scala 2.11.11
 
 ## 0.4 – 2017-03-01
 
