@@ -1,3 +1,4 @@
+import scala.sys.process._
 import ReleaseTransformations._
 
 // Do-it-all command for Travis CI
