@@ -7,6 +7,8 @@ and this project does **not** adhere to Semantic Versioning.
 ## [Unreleased]
 ### Added
 - Support play-json 2.6
+- Support Scala 2.12
+
 ### Changed
 - Build with SBT 1.0
 - Build with Scala 2.11.11
