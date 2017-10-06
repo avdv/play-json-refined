@@ -45,7 +45,7 @@ lazy val root = (project in file("."))
     publishTo := Some(sonatypeDefaultResolver.value),
     // Dependencies
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.5.0",
+      "com.typesafe.play" %% "play-json" % "2.6.6",
       "eu.timepit" %% "refined" % "0.8.4",
       "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
     ),
