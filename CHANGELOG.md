@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project does **not** adhere to Semantic Versioning.
 
 ## [Unreleased]
+
+## 0.5 – 2017-10-24
 ### Added
 - [Support play-json 2.6](https://github.com/lunaryorn/play-json-refined/issues/4)
 - [Support Scala 2.12](https://github.com/lunaryorn/play-json-refined/issues/4)
