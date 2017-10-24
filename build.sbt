@@ -1,3 +1,5 @@
+import java.time.LocalDate
+
 import scala.sys.process._
 import ReleaseTransformations._
 
@@ -29,6 +31,30 @@ lazy val updateVersionInReadme: ReleaseStep = { st: State =>
   }
 
   Seq("git", "add", readme.getAbsolutePath) !! st.log
+
+  st
+}
+
+lazy val updateChangelog: ReleaseStep = { st: State =>
+  val newVersion = Project.extract(st).get(version)
+
+  val pattern = "## \\[?Unreleased\\]?".r
+  val changelog = file("CHANGELOG.md")
+  val content = IO.read(changelog)
+
+  pattern.findFirstMatchIn(content) match {
+    case Some(m) =>
+      IO.write(
+        changelog,
+        m.before(0) + m.matched + s"\n\n## $newVersion – ${LocalDate.now().toString}" + m
+          .after(0)
+      )
+    case None =>
+      throw new IllegalStateException(
+        "Failed to find Unreleased section in CHANGELOG")
+  }
+
+  Seq("git", "add", changelog.getAbsolutePath) !! st.log
 
   st
 }
@@ -82,6 +108,7 @@ lazy val root = (project in file("."))
       runTest,
       setReleaseVersion,
       updateVersionInReadme,
+      updateChangelog,
       commitReleaseVersion,
       tagRelease,
       publishArtifacts,
