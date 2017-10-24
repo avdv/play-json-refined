@@ -6,11 +6,11 @@ and this project does **not** adhere to Semantic Versioning.
 
 ## [Unreleased]
 ### Added
-- Support play-json 2.6 (<https://github.com/lunaryorn/play-json-refined/issues/4>)
-- Support Scala 2.12 (<https://github.com/lunaryorn/play-json-refined/issues/4>)
+- [Support play-json 2.6](https://github.com/lunaryorn/play-json-refined/issues/4)
+- [Support Scala 2.12](https://github.com/lunaryorn/play-json-refined/issues/4)
 
 ### Changed
-- Update refined to 0.8.4 (<https://github.com/lunaryorn/play-json-refined/pull/3>)
+- [Update refined to 0.8.4](https://github.com/lunaryorn/play-json-refined/pull/3)
 - Build with SBT 1.0
 - Build with Scala 2.11.11
 
