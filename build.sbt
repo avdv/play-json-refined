@@ -72,7 +72,7 @@ lazy val root = (project in file("."))
       Developer(
         id = "lunaryorn",
         name = "Sebastian Wiesner",
-        email = "swiesner@lunaryorn.com",
+        email = "sebastian@swsnr.de",
         url = url("http://www.lunaryorn.com")
       )
     ),
