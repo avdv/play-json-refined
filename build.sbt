@@ -73,7 +73,7 @@ lazy val root = (project in file("."))
         id = "lunaryorn",
         name = "Sebastian Wiesner",
         email = "sebastian@swsnr.de",
-        url = url("http://www.lunaryorn.com")
+        url = url("https://swsnr.de")
       )
     ),
     scmInfo := Some(
