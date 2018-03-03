@@ -118,12 +118,12 @@ lazy val root = (project in file("."))
       releaseStepCommand("sonatypeRelease")
     ),
     // Formatting
-    scalafmtVersion := "1.3.0",
+    scalafmtVersion := "1.4.0",
     // Dependencies
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.6.6",
-      "eu.timepit" %% "refined" % "0.8.4",
-      "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
+      "com.typesafe.play" %% "play-json" % "2.6.9",
+      "eu.timepit" %% "refined" % "0.8.7",
+      "org.scalacheck" %% "scalacheck" % "1.13.5" % "test"
     ),
     // Compiler flags.  The scala version comes from sbt-travisci
     scalacOptions ++= Seq(
