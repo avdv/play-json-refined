@@ -9,3 +9,6 @@ addSbtPlugin("com.dwijnand" % "sbt-travisci" % "1.1.1")
 
 // Get version from Git
 addSbtPlugin("com.dwijnand" % "sbt-dynver" % "3.0.0")
+
+// Publish to bintray
+addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.4")
