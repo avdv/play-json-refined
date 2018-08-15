@@ -1,17 +1,3 @@
-// Do-it-all command for Travis CI
-val validateCommands = List(
-  "clean",
-  "headerCheck",
-  "test:headerCheck",
-  "compile",
-  "test:compile",
-  "scalafmt::test",
-  "test:scalafmt::test",
-  "sbt:scalafmt::test",
-  "test"
-)
-addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
-
 lazy val root = (project in file("."))
   .settings(
     // Build metadata for this project
@@ -37,8 +23,6 @@ lazy val root = (project in file("."))
       )),
     description := "Play JSON Reads/Writes for refined types",
     startYear := Some(2016),
-    // Formatting
-    scalafmtVersion := "1.4.0",
     // Dependencies
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-json" % "2.6.9",
