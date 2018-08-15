@@ -28,7 +28,7 @@ import eu.timepit.refined._
 import eu.timepit.refined.auto._
 import eu.timepit.refined.api._
 import play.api.libs.json._
-import com.lunaryorn.refined.play.json._
+import de.swsnr.refined.play.json._
 Welcome to Scala 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_65).
 Type in expressions for evaluation. Or try :help.
 
