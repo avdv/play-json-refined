@@ -11,9 +11,11 @@ env:
   - secure: fj8qxDQKaJlonAJ67fiVYIFaq+ILFuH/jrTuYV6hlZD3emubJP8ANvPPZrAS/SzFQn803+FPzQPe4xw7qOEpe4Y27UyTBg3cisaq5lo+iLSwFfxgy/uPj3MYBmTkpyLWeBCzvLUV8XgdJ/by/I7KjbomuKisY8lRStJUjiGcSPQMjyUJe3q4SHEagpUoSFSQ++htSpUcMMdvSVlvRBrUnAiyUf6IGMJfv2E/o611UYUnMu1m1HONDJpM9vrNRt7+vkTAWAV6XA18JwR5kz0xMSliyQPF+3mbqNJpaENHM/5y2xhAV6mgaIOLQzJ2DKZqg4pssXCHKKqLvUE7cH4YZ7AnBJB6NndjDfJLUF8hTC5t0BaqwN5+IMaFvIYbfA3X0HFpGSQHPS7hTJnwH7vVGo43HzjLDtD4nYxmAYg4fAxLGP1il26E8Vz052Y7+uI++Dl4iRysXTT2CNAKPNQmeobQh5H9Wgj65F+m4nr0tSIML6DYvwfGJO0Np9UI8l5DuiY18oG9yKMGL1kcQWcRO6CiQ8GD0fFlgJf0A3Vy2kY8kTCEW4Ilza2tHPVffI7ukT0aui+U6ew/BrzYcHU2iC55U8gT5Vi8qxulC4MnkRcLP37nsPXBIUEMq0V5gmU0d2zBoG/TPnjiTZTLdXU8ahvuynI//rRa9jDHGJjER/4=
 script:
 - sbt ++$TRAVIS_SCALA_VERSION validate
-after_success:
-# Publish to bintray
-- sbt ++$TRAVIS_SCALA_VERSION publish
+jobs:
+  include:
+  - stage: publish
+    script: sbt +publish
+    jdk: openjdk8
 cache:
   directories:
   # Cache SBT launcher and SBT dependencies
