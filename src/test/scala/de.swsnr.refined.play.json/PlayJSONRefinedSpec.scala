@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lunaryorn.refined.play.json
+package de.swsnr.refined.play.json
 
 import eu.timepit.refined.auto._
 import eu.timepit.refined.numeric.Positive

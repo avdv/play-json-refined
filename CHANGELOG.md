@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project does **not** adhere to Semantic Versioning.
 
 ## [Unreleased]
+### Changed
+- Move to group ID `de.swsnr`
+- Rename package from `com.lunaryorn.refined.play` to `de.swsnr.refined.play`.
 
 ## 0.5 – 2017-10-24
 ### Added

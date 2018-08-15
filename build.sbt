@@ -2,7 +2,7 @@ lazy val root = (project in file("."))
   .settings(
     // Build metadata for this project
     name := "play-json-refined",
-    organization := "com.lunaryorn",
+    organization := "de.swsnr",
     organizationName := "Sebastian Wiesner",
     homepage := Some(url("https://github.com/lunaryorn/play-json-refined")),
     licenses += "Apache-2.0" -> url(

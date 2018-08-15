@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.lunaryorn.refined.play
+package de.swsnr.refined.play
 
 import eu.timepit.refined.api._
 import _root_.play.api.libs.json._
