@@ -14,7 +14,7 @@ script:
 jobs:
   include:
   - stage: publish
-    script: sbt +publish
+    script: sbt bintrayEnsureCredentials bintrayEnsureLicenses +publish
     jdk: openjdk8
 cache:
   directories:
