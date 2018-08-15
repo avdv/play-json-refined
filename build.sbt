@@ -52,6 +52,8 @@ lazy val root = (project in file("."))
       "-Ywarn-nullary-override",
       // Warn when numerics are unintentionally widened
       "-Ywarn-numeric-widen",
+      // Warn about unused things
+      "-Ywarn-unused",
       // Fail compilation on warnings
       "-Xfatal-warnings"
     )
