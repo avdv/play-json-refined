@@ -16,6 +16,7 @@ jobs:
   - stage: publish
     script: sbt bintrayEnsureCredentials bintrayEnsureLicenses +publish
     jdk: openjdk8
+    if: type = push
 cache:
   directories:
   # Cache SBT launcher and SBT dependencies
