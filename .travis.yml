@@ -1,12 +1,12 @@
 language: scala
 jdk:
-  - oraclejdk8
-  - openjdk10
+- oraclejdk8
+- openjdk10
 scala:
-  - 2.11.12
-  - 2.12.6
+- 2.11.12
+- 2.12.6
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION validate
+- sbt ++$TRAVIS_SCALA_VERSION validate
 cache:
   directories:
   # Cache SBT launcher and SBT dependencies
@@ -15,8 +15,8 @@ cache:
   - $HOME/.sbt/launchers
   - $HOME/.ivy2/cache
 before_cache:
-  - du -h -d 1 $HOME/.ivy2/cache
-  - du -h -d 2 $HOME/.sbt/
-  # Delete transient files to avoid needless re-caching
-  - find $HOME/.sbt -name "*.lock" -type f -delete
-  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -type f -delete
+- du -h -d 1 $HOME/.ivy2/cache
+- du -h -d 2 $HOME/.sbt/
+# Delete transient files to avoid needless re-caching
+- find $HOME/.sbt -name "*.lock" -type f -delete
+- find $HOME/.ivy2/cache -name "ivydata-*.properties" -type f -delete
