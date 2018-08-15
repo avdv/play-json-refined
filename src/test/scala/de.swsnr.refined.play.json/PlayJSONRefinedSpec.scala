@@ -17,8 +17,9 @@
 package de.swsnr.refined.play.json
 
 import eu.timepit.refined.auto._
-import eu.timepit.refined.numeric.Positive
+import eu.timepit.refined.numeric.{Negative, Positive}
 import eu.timepit.refined.api.Refined
+import eu.timepit.refined.scalacheck.numeric._
 import _root_.play.api.libs.json.{JsNumber, JsSuccess, Json}
 import play.api.libs.json.JsError
 import org.scalacheck.Prop._
@@ -26,23 +27,22 @@ import org.scalacheck.Properties
 import shapeless.test.illTyped
 
 class PlayJSONRefinedSpec extends Properties("PlayJSONReadsWrites") {
-  type PosInt = Int Refined Positive
-
-  property("reads success") = secure {
-    Json.fromJson[PosInt](JsNumber(10)) ?= JsSuccess(10: PosInt)
+  property("reads success") = forAll { n: Int Refined Positive =>
+    Json.fromJson[Int Refined Positive](JsNumber(BigDecimal(n))) ?= JsSuccess(n)
   }
 
-  property("reads failure") = secure {
-    Json.fromJson[PosInt](JsNumber(-42)) ?=
-      JsError("Predicate failed: (-42 > 0).")
+  property("reads failure") = forAll { n: Int Refined Negative =>
+    Json.fromJson[Int Refined Positive](JsNumber(BigDecimal(n))) ?=
+      JsError(s"Predicate failed: ($n > 0).")
   }
 
-  property("writes success") = secure {
-    Json.toJson(10: PosInt) ?= JsNumber(10)
+  property("writes success") = forAll { n: Int Refined Positive =>
+    Json.toJson[Int Refined Positive](n) ?= JsNumber(BigDecimal(n))
   }
 
   property("writes failure") = secure {
-    illTyped("""Json.toJson[PosInt](-10)""", """Predicate failed.*""")
+    illTyped("""Json.toJson[Int Refined Positive](-10)""",
+             """Predicate failed.*""")
     true
   }
 }
