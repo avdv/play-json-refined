@@ -1,6 +1,6 @@
 # play-json-refined
 
-[![Release](https://jitpack.io/v/de.swsnr/play-json-refined.svg)](https://jitpack.io/#de.swsnr/play-json-refined)
+[![Bintray](https://img.shields.io/bintray/v/lunaryorn/maven/play-json-refined.svg?style=plastic)](https://bintray.com/lunaryorn/maven/play-json-refined/#)
 [![Apache 2.0 license](https://img.shields.io/github/license/lunaryorn/play-json-refined.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Travis master build status](https://img.shields.io/travis/lunaryorn/play-json-refined/master.svg)](https://travis-ci.org/lunaryorn/play-json-refined)
 
@@ -15,11 +15,11 @@ In other words, this library let’s you convert refined types to and from JSON
 Add the following to your `build.sbt`:
 
 ```scala
-resolvers += "jitpack" at "https://jitpack.io"
+resolvers += Resolver.bintrayRepo("lunaryorn", "maven")
 libraryDependencies += "de.swsnr" %% "play-json-refined" % "<version>"
 ```
 
-Replace `<version>` with the version in the JitPack badge above.
+Replace `<version>` with the desired version (see Bintray badge above).
 
 ## Usage
 
