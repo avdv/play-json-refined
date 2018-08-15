@@ -7,7 +7,5 @@ addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.15")
 // Scala version management from travis.yml
 addSbtPlugin("com.dwijnand" % "sbt-travisci" % "1.1.1")
 
-// Plugins for releases
-addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.7")
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.0")
+// Get version from Git
+addSbtPlugin("com.dwijnand" % "sbt-dynver" % "3.0.0")

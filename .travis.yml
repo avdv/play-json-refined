@@ -4,15 +4,8 @@ jdk:
 scala:
   - 2.11.11
   - 2.12.4
-env:
-  global:
-    # Sonatype credentials
-    - SONATYPE_USERNAME=lunaryorn
-    - secure: "GwB+AbwpE1MILx0MlfypcPHrDShD1jUgMQEGVV7ofrsIkctTS7VYisdh0mLnD4j3E1r38MEXj8v7+4XAZBnjWmuFNOZyQ2+ghZXWFfW7Cf121im27NwNvRNeGDKWynek1315DJOLi7lJxsnU8VkBEY3L7CQWOltuO7d/G3kiznpi+nKGgWmqP3PVMQiRPW4100Qh2QAwNnnWNYhYKVZBCvRNZ8LgXhwaby30ruM5Vw3VQdTj8UHrsuIf3idOy1jGnus7335kkOW90Z355PWbvnikPKl4lVY5Ke/fGyvz9ybiFP+FoZct934Ctju7iummJZkWuBp6Y9iAZNG9EPxLaFEb8XnO3ewStg54iNlFvIjPRKflvVgVAP7gvn/xHlcLpgnaEJSRtzsEEVeOqyZmF9FTCnaD7QLbS20+DlVxoZObGK2S54D3MdQtZse6ZwA7+cxD14ZuynOPhXnhx/ooLpSq4P1SbKMslso2nlU+MFKsEyubtn51c33aINg9tfyBXBvvmf7ePuSm6Mzfl6z/FNV1HsobR9PZX/W1XYCETq356Lh7hRvB7Lr+ws49IB6e98gavX3y31n9ThMeTz6frV8EGX+aD308MBnjd4yrrEwiif/hU1wUepSU97S8wwYyVFnkjNv1Gl3CPRAJIu99rHtp6Cf/61EDWk6qDQEUk0w="
 script:
   - sbt ++$TRAVIS_SCALA_VERSION validate
-# Publish snapshots to Maven Central after every successful build
-after_success: "./scripts/travis-publish.bash"
 cache:
   directories:
   # Cache SBT launcher and SBT dependencies

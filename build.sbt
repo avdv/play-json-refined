@@ -1,8 +1,3 @@
-import java.time.LocalDate
-
-import scala.sys.process._
-import ReleaseTransformations._
-
 // Do-it-all command for Travis CI
 val validateCommands = List(
   "clean",
@@ -16,48 +11,6 @@ val validateCommands = List(
   "test"
 )
 addCommandAlias("validate", validateCommands.mkString(";", ";", ""))
-
-// Additional release step to update our README
-lazy val updateVersionInReadme: ReleaseStep = { st: State =>
-  val newVersion = Project.extract(st).get(version)
-
-  val pattern = "\"com.lunaryorn\" %% \"play-json-refined\" % \"([^\"]+)\"".r
-  val readme = file("README.md")
-  val content = IO.read(readme)
-  pattern.findFirstMatchIn(content) match {
-    case Some(m) => IO.write(readme, m.before(1) + newVersion + m.after(1))
-    case None =>
-      throw new IllegalStateException("Failed to find version in README")
-  }
-
-  Seq("git", "add", readme.getAbsolutePath) !! st.log
-
-  st
-}
-
-lazy val updateChangelog: ReleaseStep = { st: State =>
-  val newVersion = Project.extract(st).get(version)
-
-  val pattern = "## \\[?Unreleased\\]?".r
-  val changelog = file("CHANGELOG.md")
-  val content = IO.read(changelog)
-
-  pattern.findFirstMatchIn(content) match {
-    case Some(m) =>
-      IO.write(
-        changelog,
-        m.before(0) + m.matched + s"\n\n## $newVersion – ${LocalDate.now().toString}" + m
-          .after(0)
-      )
-    case None =>
-      throw new IllegalStateException(
-        "Failed to find Unreleased section in CHANGELOG")
-  }
-
-  Seq("git", "add", changelog.getAbsolutePath) !! st.log
-
-  st
-}
 
 lazy val root = (project in file("."))
   .settings(
@@ -84,39 +37,6 @@ lazy val root = (project in file("."))
       )),
     description := "Play JSON Reads/Writes for refined types",
     startYear := Some(2016),
-    // Publish signed artifacts to Maven Central
-    publishMavenStyle := true,
-    publishTo := Some(sonatypeDefaultResolver.value),
-    // Credentials for Travis CI, see
-    // http://www.cakesolutions.net/teamblogs/publishing-artefacts-to-oss-sonatype-nexus-using-sbt-and-travis-ci
-    credentials ++= (for {
-      username <- Option(System.getenv().get("SONATYPE_USERNAME"))
-      password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
-    } yield
-      Credentials("Sonatype Nexus Repository Manager",
-                  "oss.sonatype.org",
-                  username,
-                  password)).toSeq,
-    // Release settings
-    releasePublishArtifactsAction := PgpKeys.publishSigned.value,
-    releaseCrossBuild := true,
-    releaseTagComment := s"play-json-refined ${version.value}",
-    releaseCommitMessage := s"Bump version to ${version.value}",
-    releaseProcess := Seq[ReleaseStep](
-      checkSnapshotDependencies,
-      inquireVersions,
-      runTest,
-      setReleaseVersion,
-      updateVersionInReadme,
-      updateChangelog,
-      commitReleaseVersion,
-      tagRelease,
-      publishArtifacts,
-      setNextVersion,
-      commitNextVersion,
-      pushChanges,
-      releaseStepCommand("sonatypeRelease")
-    ),
     // Formatting
     scalafmtVersion := "1.4.0",
     // Dependencies
