@@ -7,7 +7,8 @@ and this project does **not** adhere to Semantic Versioning.
 ## [Unreleased]
 ### Changed
 - Move to group ID `de.swsnr`
-- Rename package from `com.lunaryorn.refined.play` to `de.swsnr.refined.play`.
+- Rename package from `com.lunaryorn.refined.play` to `de.swsnr.refined.play`
+- Update refined to 0.9.2
 
 ## 0.5 – 2017-10-24
 This release supports Play JSON 2.6 with Scala 2.11 and Scala 2.12.
