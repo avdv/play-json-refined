@@ -25,7 +25,7 @@ import org.scalacheck.Prop._
 import org.scalacheck.Properties
 import shapeless.test.illTyped
 
-class PlayJsonSpec extends Properties("PlayJSONReadsWrites") {
+class PlayJSONRefinedSpec extends Properties("PlayJSONReadsWrites") {
   type PosInt = Int Refined Positive
 
   property("reads success") = secure {
