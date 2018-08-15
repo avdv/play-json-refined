@@ -6,6 +6,8 @@ and this project does **not** adhere to Semantic Versioning.
 
 ## [Unreleased]
 
+## 0.6.1 – 2018-08-15
+
 ### Changed
 - Release to Bintray.
 
