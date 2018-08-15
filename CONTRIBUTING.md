@@ -2,9 +2,11 @@
 
 ## Release process
 
-Travis CI automatically publishes all builds to Bintray, so publishing is simple:
+Travis CI automatically publishes all builds to Bintray, so publishing is simple.
+
+To release version `X.Y.Z`:
 
 - Check that `CHANGELOG.md` lists all important changes.
-- Add a new headline for the new version and commit.
-- Tag the commit with the version, ie, `git tag -sm 'play-json-refined X.Y' vX.Y`.
+- `sbt 'release X.Y.Z'` (quotes are important!)
+- Check that the changelog looks good and the tag `vX.Y.Z` exists.
 - `git push --follow-tags`

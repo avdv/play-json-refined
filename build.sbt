@@ -1,3 +1,11 @@
+import java.time.LocalDate
+
+import complete.DefaultParsers._
+
+import scala.sys.process._
+
+val release = inputKey[Unit]("Commit and tag a release")
+
 lazy val root = (project in file("."))
   .settings(
     // Build metadata for this project
@@ -58,6 +66,54 @@ lazy val root = (project in file("."))
       "-Ywarn-unused",
       // Fail compilation on warnings
       "-Xfatal-warnings"
-    )
+    ),
+    // Make a release
+    release := {
+      val log = streams.value.log
+
+      // Only allow releases from clean repos.
+      val status = Seq("git", "status", "--porcelain") !! log
+      if (status.trim.nonEmpty) {
+        log.error("Repository dirty!  Please commit all changes first!")
+        throw new IllegalStateException()
+      }
+
+      val newVersion = (Space ~ NotSpace).parsed._2
+
+      log.info(s"Updating changelog for version $newVersion")
+
+      val pattern = "## \\[?Unreleased\\]?".r
+      val changelog = file("CHANGELOG.md")
+      val content = IO.read(changelog)
+
+      pattern.findFirstMatchIn(content) match {
+        case Some(m) =>
+          IO.write(
+            changelog,
+            m.before(0) + m.matched + s"\n\n## $newVersion – ${LocalDate.now().toString}" + m
+              .after(0)
+          )
+        case None =>
+          throw new IllegalStateException(
+            "Failed to find Unreleased section in CHANGELOG")
+      }
+
+      def check(code: Int): Unit =
+        if (code != 0) {
+          log.error(s"Exited $code")
+          throw new Exception()
+        }
+
+      log.info(s"Commit $changelog")
+      check(Seq("git", "add", changelog.getAbsolutePath) ! log)
+      check(Seq("git", "commit", "-m", s"Release $newVersion") ! log)
+      val tagName = s"v$newVersion"
+      log.info(s"Make tag $tagName")
+      check(
+        Seq("git", "tag", "-sm", s"${name.value} $newVersion", tagName) ! log)
+      log.info(s"New version $newVersion ready.")
+      log.info(
+        "Check everything, and then run 'git push --follow-tags' to publish")
+    }
   )
   .enablePlugins(AutomateHeaderPlugin)
