@@ -7,6 +7,7 @@ and this project does **not** adhere to Semantic Versioning.
 ## [Unreleased]
 
 ## 0.6 – 2018-08-15
+
 ### Changed
 - Move to group ID `de.swsnr`
 - Rename package from `com.lunaryorn.refined.play` to `de.swsnr.refined.play`
