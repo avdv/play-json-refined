@@ -7,6 +7,7 @@ and this project does **not** adhere to Semantic Versioning.
 ## [Unreleased]
 
 ## 0.6 – 2018-08-15
+This release supports Play JSON 2.6 with Scala 2.11 and Scala 2.12.
 
 ### Changed
 - Move to group ID `de.swsnr`
