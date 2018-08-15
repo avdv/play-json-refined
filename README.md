@@ -1,6 +1,6 @@
 # play-json-refined
 
-[![Latest version](https://index.scala-lang.org/lunaryorn/play-json-refined/play-json-refined/latest.svg)](https://index.scala-lang.org/lunaryorn/play-json-refined/play-json-refined)
+[![Release](https://jitpack.io/v/de.swsnr/play-json-refined.svg)](https://jitpack.io/#de.swsnr/play-json-refined)
 [![Apache 2.0 license](https://img.shields.io/github/license/lunaryorn/play-json-refined.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Travis master build status](https://img.shields.io/travis/lunaryorn/play-json-refined/master.svg)](https://travis-ci.org/lunaryorn/play-json-refined)
 
@@ -9,18 +9,17 @@ In other words, this library let’s you convert refined types to and from JSON
 
 [Play JSON]: https://www.playframework.com/documentation/2.5.x/ScalaJson
 [refined]: https://github.com/fthomas/refined
-[maven]: http://search.maven.org/#search%7Cga%7C1%7Ccom.lunaryorn.play-json-refined
 
 ## Installation
 
 Add the following to your `build.sbt`:
 
-``` scala
-libraryDependencies += "com.lunaryorn" %% "play-json-refined" % "0.5"
+```scala
+resolvers += "jitpack" at "https://jitpack.io"
+libraryDependencies += "de.swsnr" %% "play-json-refined" % "<version>"
 ```
 
-This release of `play-json-refined` supports Play JSON 2.6 with Scala 2.11 and Scala 2.12.
-Older releases of this library may support earlier versions of Play JSON. 
+Replace `<version>` with the version in the JitPack badge above.
 
 ## Usage
 
