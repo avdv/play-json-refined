@@ -41,10 +41,10 @@ lazy val root = (project in file("."))
     startYear := Some(2019),
     // Dependencies
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.6.9",
-      "eu.timepit" %% "refined" % "0.9.2",
+      "com.typesafe.play" %% "play-json" % "2.7.4",
+      "eu.timepit" %% "refined" % "0.9.10",
       "org.scalacheck" %% "scalacheck" % "1.14.0" % Test,
-      "eu.timepit" %% "refined-scalacheck" % "0.9.2" % Test,
+      "eu.timepit" %% "refined-scalacheck" % "0.9.10" % Test,
     ),
     // Compiler flags.  The scala version comes from sbt-travisci
     scalacOptions ++= Seq(
@@ -59,21 +59,28 @@ lazy val root = (project in file("."))
       "-unchecked",
       // Recommended additional warnings
       "-Xlint",
-      // Warn when argument list is modified to match receiver
-      "-Ywarn-adapted-args",
-      // Warn about dead code
-      "-Ywarn-dead-code",
-      // Warn about inaccessible types in signatures
-      "-Ywarn-inaccessible",
-      // Warn when non-nullary overrides a nullary (def foo() over def foo)
-      "-Ywarn-nullary-override",
-      // Warn when numerics are unintentionally widened
-      "-Ywarn-numeric-widen",
-      // Warn about unused things
-      "-Ywarn-unused",
       // Fail compilation on warnings
       "-Xfatal-warnings"
-    ),
+    ) ++ (scalaBinaryVersion.value match {
+      case "2.13" => Seq.empty[String]
+      case _ =>
+        Seq(
+          // enable higher-kinded types, (no longer needed in Scala 2.13.1)
+          "-language:higherKinds",
+          // Warn when argument list is modified to match receiver
+          "-Ywarn-adapted-args",
+          // Warn about dead code
+          "-Ywarn-dead-code",
+          // Warn about inaccessible types in signatures
+          "-Ywarn-inaccessible",
+          // Warn when non-nullary overrides a nullary (def foo() over def foo)
+          "-Ywarn-nullary-override",
+          // Warn when numerics are unintentionally widened
+          "-Ywarn-numeric-widen",
+          // Warn about unused things
+          "-Ywarn-unused"
+        )
+    }),
     // Make a release
     release := {
       val log = streams.value.log
