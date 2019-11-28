@@ -10,7 +10,7 @@ script:
 jobs:
   include:
   - stage: publish
-    script: sbt bintrayEnsureCredentials bintrayEnsureLicenses +publish
+    script: sbt bintrayEnsureCredentials bintrayEnsureLicenses +publish +bintrayRelease
     jdk: openjdk8
     if: type = push
 cache:

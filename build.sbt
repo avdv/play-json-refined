@@ -13,6 +13,7 @@ lazy val root = (project in file("."))
     organization := "de.cbley",
     organizationName := "Claudio Bley",
     homepage := Some(url("https://github.com/avdv/play-json-refined")),
+    bintrayReleaseOnPublish := false,
     bintrayPackageLabels := Seq("refined", "play-json"),
     licenses += "Apache-2.0" -> url(
       "http://www.apache.org/licenses/LICENSE-2.0"),
