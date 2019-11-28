@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Sebastian Wiesner
+ * Copyright 2019 Claudio Bley
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.swsnr.refined.play.json
+package de.cbley.refined.play.json
 
 import eu.timepit.refined.auto._
 import eu.timepit.refined.numeric.{Negative, Positive}

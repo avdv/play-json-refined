@@ -10,9 +10,9 @@ lazy val root = (project in file("."))
   .settings(
     // Build metadata for this project
     name := "play-json-refined",
-    organization := "de.swsnr",
-    organizationName := "Sebastian Wiesner",
-    homepage := Some(url("https://github.com/lunaryorn/play-json-refined")),
+    organization := "de.cbley",
+    organizationName := "Claudio Bley",
+    homepage := Some(url("https://github.com/avdv/play-json-refined")),
     bintrayPackageLabels := Seq("refined", "play-json"),
     licenses += "Apache-2.0" -> url(
       "http://www.apache.org/licenses/LICENSE-2.0"),
@@ -22,16 +22,22 @@ lazy val root = (project in file("."))
         name = "Sebastian Wiesner",
         email = "sebastian@swsnr.de",
         url = url("https://swsnr.de")
+      ),
+      Developer(
+        id = "avdv",
+        name = "Claudio Bley",
+        email = "claudio.bley@gmail.com",
+        url = url("https://github.com/avdv")
       )
     ),
     scmInfo := Some(
       ScmInfo(
-        url("https://github.com/lunaryorn/play-json-refined"),
-        "scm:git:https://github.com/lunaryorn/play-json-refined.git",
-        Some(s"scm:git:git@github.com:lunaryorn/play-json-refined.git")
+        url("https://github.com/avdv/play-json-refined"),
+        "scm:git:https://github.com/avdv/play-json-refined.git",
+        Some(s"scm:git:git@github.com:avdv/play-json-refined.git")
       )),
     description := "Play JSON Reads/Writes for refined types",
-    startYear := Some(2016),
+    startYear := Some(2019),
     // Dependencies
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-json" % "2.6.9",
