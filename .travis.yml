@@ -1,3 +1,5 @@
+if: branch = master OR tag =~ ^v[0-9]
+
 language: scala
 jdk:
 - openjdk8
@@ -12,7 +14,7 @@ jobs:
   - stage: publish
     script: sbt bintrayEnsureCredentials bintrayEnsureLicenses +publish +bintrayRelease
     jdk: openjdk8
-    if: type = push
+    if: type = push AND tag IS present
 cache:
   directories:
   # Cache SBT launcher and SBT dependencies
