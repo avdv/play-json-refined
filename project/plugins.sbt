@@ -8,7 +8,7 @@ addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
 addSbtPlugin("com.dwijnand" % "sbt-travisci" % "1.2.0")
 
 // Get version from Git
-addSbtPlugin("com.dwijnand" % "sbt-dynver" % "3.0.0")
+addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.0.0")
 
 // Publish to bintray
 addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.5")
