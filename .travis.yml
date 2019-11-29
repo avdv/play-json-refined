@@ -1,3 +1,5 @@
+if: branch = master OR tag =~ ^v[0-9]
+
 language: scala
 jdk:
 - openjdk8
@@ -5,18 +7,14 @@ jdk:
 scala:
 - 2.11.12
 - 2.12.6
-env:
-  global:
-  - secure: kZ5iNfLk51pXJTAAL7hec1c12f4oOSrAbw1Sq1pNCVRTFySqJanY0nDbnTaxbCYvEfqyabjn55YJoBlFCbEgnba5o1n636+lP+tSMBxbNYMSgWLFuf/ABB7xUT2hRMCx/oebU1Rxmr0t+eL7ZWiwt3KrbrW5mxiCfn5jkD1BiLJjVHtLTmLNc+igEywxBe3JYXyxV9Z86N2/Hoy3tM/nKxEL8e2AKgOHHAf5G0IlDwrIJQ87MTOAKNQm6O622vesaWIwi7bT/3k8kkuwTLze+nEOyHpdw5Zf5z/6qrPvbp3KYLM4KieaQ+pPzNOkpp2E5emy1Hmh69SROEgYdMF7A7sf6U0yG8ENyM9x9TueFGghza1UEeW8Cl1AbzpLSI8YNdhdz15LTOIhR4ladz9gpjKK46bktQzYdLqWs/OoR+xBtnadPXl3DBP3hC+S8lwjZ8MZ7Mphnk+yfDq5MeD34zbkjS+dzFEpPjdrt8AEGB4MPz7yRQEUxbqqmT0bqBmGKNq+2ffgJ+2AGOiRJrJeRwKtTY/pnFvGz/ABseHNhJnDgD3EHqVzLd0YW1Y/gnOk0T9/q4TL7a0qzKPYd6YfyUkPdvd27Yn1yY7f/rpMax7d0peXGXbENTPRi9xmETbFsGOx9NSEnQyYtlVs68AHGqGvJRLjN4KmGmnJPHbpFhM=
-  - secure: fj8qxDQKaJlonAJ67fiVYIFaq+ILFuH/jrTuYV6hlZD3emubJP8ANvPPZrAS/SzFQn803+FPzQPe4xw7qOEpe4Y27UyTBg3cisaq5lo+iLSwFfxgy/uPj3MYBmTkpyLWeBCzvLUV8XgdJ/by/I7KjbomuKisY8lRStJUjiGcSPQMjyUJe3q4SHEagpUoSFSQ++htSpUcMMdvSVlvRBrUnAiyUf6IGMJfv2E/o611UYUnMu1m1HONDJpM9vrNRt7+vkTAWAV6XA18JwR5kz0xMSliyQPF+3mbqNJpaENHM/5y2xhAV6mgaIOLQzJ2DKZqg4pssXCHKKqLvUE7cH4YZ7AnBJB6NndjDfJLUF8hTC5t0BaqwN5+IMaFvIYbfA3X0HFpGSQHPS7hTJnwH7vVGo43HzjLDtD4nYxmAYg4fAxLGP1il26E8Vz052Y7+uI++Dl4iRysXTT2CNAKPNQmeobQh5H9Wgj65F+m4nr0tSIML6DYvwfGJO0Np9UI8l5DuiY18oG9yKMGL1kcQWcRO6CiQ8GD0fFlgJf0A3Vy2kY8kTCEW4Ilza2tHPVffI7ukT0aui+U6ew/BrzYcHU2iC55U8gT5Vi8qxulC4MnkRcLP37nsPXBIUEMq0V5gmU0d2zBoG/TPnjiTZTLdXU8ahvuynI//rRa9jDHGJjER/4=
 script:
 - sbt ++$TRAVIS_SCALA_VERSION validate
 jobs:
   include:
   - stage: publish
-    script: sbt bintrayEnsureCredentials bintrayEnsureLicenses +publish
+    script: sbt bintrayEnsureCredentials bintrayEnsureLicenses +publish +bintrayRelease
     jdk: openjdk8
-    if: type = push
+    if: type = push AND tag IS present
 cache:
   directories:
   # Cache SBT launcher and SBT dependencies
