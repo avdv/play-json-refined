@@ -19,8 +19,6 @@ package de.cbley.refined.play
 import eu.timepit.refined.api._
 import _root_.play.api.libs.json._
 
-import scala.language.higherKinds
-
 package object json {
   implicit def writeRefined[T, P, F[_, _]](
       implicit writesT: Writes[T],
