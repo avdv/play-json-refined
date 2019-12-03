@@ -1,6 +1,6 @@
 # play-json-refined
 
-[![Bintray](https://img.shields.io/bintray/v/lunaryorn/maven/play-json-refined)](https://bintray.com/lunaryorn/maven/play-json-refined/#)
+[![Bintray](https://img.shields.io/bintray/v/cbley/maven/play-json-refined)](https://bintray.com/cbley/maven/play-json-refined/#)
 [![Apache 2.0 license](https://img.shields.io/github/license/avdv/play-json-refined)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Travis master build Status](https://img.shields.io/travis/com/avdv/play-json-refined)](https://travis-ci.com/avdv/play-json-refined)
 
@@ -15,8 +15,7 @@ In other words, this library let’s you convert refined types to and from JSON
 Add the following to your `build.sbt`:
 
 ```scala
-resolvers += Resolver.bintrayRepo("lunaryorn", "maven")
-libraryDependencies += "de.swsnr" %% "play-json-refined" % "<version>"
+libraryDependencies += "de.cbley" %% "play-json-refined" % "<version>"
 ```
 
 Replace `<version>` with the desired version (see Bintray badge above).
