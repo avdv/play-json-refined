@@ -41,8 +41,10 @@ class PlayJSONRefinedSpec extends Properties("PlayJSONReadsWrites") {
   }
 
   property("writes failure") = secure {
-    illTyped("""Json.toJson[Int Refined Positive](-10)""",
-             """Predicate failed.*""")
+    illTyped(
+      """Json.toJson[Int Refined Positive](-10)""",
+      """Predicate failed.*"""
+    )
     true
   }
 }

@@ -36,5 +36,6 @@ package object json {
           case Right(valueP) => JsSuccess(valueP)
           case Left(error)   => JsError(error)
         }
-    })
+      }
+    )
 }
