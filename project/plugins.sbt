@@ -1,5 +1,5 @@
 // Automate file headers
-addSbtPlugin("de.heikoseeberger" % "sbt-header" % "5.4.0")
+addSbtPlugin("de.heikoseeberger" % "sbt-header" % "5.5.0")
 
 // Code formatting
 addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
