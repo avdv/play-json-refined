@@ -16,7 +16,8 @@ lazy val root = (project in file("."))
     bintrayReleaseOnPublish := false,
     bintrayPackageLabels := Seq("refined", "play-json"),
     licenses += "Apache-2.0" -> url(
-      "http://www.apache.org/licenses/LICENSE-2.0"),
+      "http://www.apache.org/licenses/LICENSE-2.0"
+    ),
     developers := List(
       Developer(
         id = "lunaryorn",
@@ -36,7 +37,8 @@ lazy val root = (project in file("."))
         url("https://github.com/avdv/play-json-refined"),
         "scm:git:https://github.com/avdv/play-json-refined.git",
         Some(s"scm:git:git@github.com:avdv/play-json-refined.git")
-      )),
+      )
+    ),
     description := "Play JSON Reads/Writes for refined types",
     startYear := Some(2019),
     // Dependencies
@@ -44,7 +46,7 @@ lazy val root = (project in file("."))
       "com.typesafe.play" %% "play-json" % "2.8.1",
       "eu.timepit" %% "refined" % "0.9.14",
       "org.scalacheck" %% "scalacheck" % "1.14.3" % Test,
-      "eu.timepit" %% "refined-scalacheck" % "0.9.14" % Test,
+      "eu.timepit" %% "refined-scalacheck" % "0.9.14" % Test
     ),
     // Compiler flags.  The scala version comes from sbt-travisci
     scalacOptions ++= Seq(
@@ -109,7 +111,8 @@ lazy val root = (project in file("."))
           )
         case None =>
           throw new IllegalStateException(
-            "Failed to find Unreleased section in CHANGELOG")
+            "Failed to find Unreleased section in CHANGELOG"
+          )
       }
 
       def check(code: Int): Unit =
@@ -124,10 +127,12 @@ lazy val root = (project in file("."))
       val tagName = s"v$newVersion"
       log.info(s"Make tag $tagName")
       check(
-        Seq("git", "tag", "-sm", s"${name.value} $newVersion", tagName) ! log)
+        Seq("git", "tag", "-sm", s"${name.value} $newVersion", tagName) ! log
+      )
       log.info(s"New version $newVersion ready.")
       log.info(
-        "Check everything, and then run 'git push --follow-tags' to publish")
+        "Check everything, and then run 'git push --follow-tags' to publish"
+      )
     }
   )
   .enablePlugins(AutomateHeaderPlugin)

@@ -2,7 +2,7 @@
 addSbtPlugin("de.heikoseeberger" % "sbt-header" % "5.6.0")
 
 // Code formatting
-addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.3.4")
 
 // Scala version management from travis.yml
 addSbtPlugin("com.dwijnand" % "sbt-travisci" % "1.2.0")
