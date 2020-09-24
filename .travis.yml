@@ -3,10 +3,10 @@ if: branch = master OR tag =~ ^v[0-9]
 language: scala
 jdk:
 - openjdk8
-- openjdk10
+- openjdk11
 scala:
-- 2.12.10
-- 2.13.1
+- 2.12.11
+- 2.13.3
 script:
 - sbt validate
 jobs:
