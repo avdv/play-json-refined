@@ -43,7 +43,7 @@ lazy val root = (project in file("."))
     startYear := Some(2019),
     // Dependencies
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.9.0",
+      "com.typesafe.play" %% "play-json" % "2.9.1",
       "eu.timepit" %% "refined" % "0.9.18",
       "org.scalacheck" %% "scalacheck" % "1.15.1" % Test,
       "eu.timepit" %% "refined-scalacheck" % "0.9.18" % Test
