@@ -45,7 +45,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "com.typesafe.play" %% "play-json" % "2.9.0",
       "eu.timepit" %% "refined" % "0.9.20",
-      "org.scalacheck" %% "scalacheck" % "1.15.2" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.15.3" % Test,
       "eu.timepit" %% "refined-scalacheck" % "0.9.20" % Test
     ),
     // Compiler flags.  The scala version comes from sbt-travisci
