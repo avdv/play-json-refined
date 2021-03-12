@@ -12,6 +12,7 @@ lazy val root = (project in file("."))
     name := "play-json-refined",
     organization := "de.cbley",
     organizationName := "Claudio Bley",
+    crossScalaVersions := List("2.13.5", "2.12.13", "2.11.12"),
     homepage := Some(url("https://github.com/avdv/play-json-refined")),
     bintrayReleaseOnPublish := false,
     bintrayPackageLabels := Seq("refined", "play-json"),
