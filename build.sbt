@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
     name := "play-json-refined",
     organization := "de.cbley",
     organizationName := "Claudio Bley",
-    crossScalaVersions := List("2.13.5", "2.12.13"),
+    crossScalaVersions := List("2.13.5", "2.12.13", "3.0.0-RC1"),
     homepage := Some(url("https://github.com/avdv/play-json-refined")),
     licenses += "Apache-2.0" -> url(
       "http://www.apache.org/licenses/LICENSE-2.0"
@@ -41,13 +41,18 @@ lazy val root = (project in file("."))
     description := "Play JSON Reads/Writes for refined types",
     startYear := Some(2019),
     // Dependencies
-    libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.9.0",
-      "eu.timepit" %% "refined" % "0.9.20",
-      "org.scalacheck" %% "scalacheck" % "1.15.2" % Test,
-      "eu.timepit" %% "refined-scalacheck" % "0.9.20" % Test
-    ),
-    // Compiler flags.  The scala version comes from sbt-travisci
+    libraryDependencies ++= {
+      val isScala3 = scalaVersion.value == "3.0.0-RC1"
+
+      Seq(
+        "com.typesafe.play" %% "play-json" % (if (isScala3) "2.10.0-RC2"
+                                              else "2.9.0"),
+        "eu.timepit" %% "refined" % "0.9.21",
+        "org.scalacheck" %% "scalacheck" % "1.15.3" % Test,
+        "eu.timepit" %% "refined-scalacheck" % "0.9.21" % Test
+      )
+    },
+    // Compiler flags.
     scalacOptions ++= Seq(
       // Code encoding
       "-encoding",
@@ -58,13 +63,10 @@ lazy val root = (project in file("."))
       "-feature",
       // Enable additional warnings about assumptions in the generated code
       "-unchecked",
-      // Recommended additional warnings
-      "-Xlint",
       // Fail compilation on warnings
       "-Xfatal-warnings"
     ) ++ (scalaBinaryVersion.value match {
-      case "2.13" => Seq.empty[String]
-      case _ =>
+      case "2.12" =>
         Seq(
           // enable higher-kinded types, (no longer needed in Scala 2.13.1)
           "-language:higherKinds",
@@ -78,9 +80,15 @@ lazy val root = (project in file("."))
           "-Ywarn-nullary-override",
           // Warn when numerics are unintentionally widened
           "-Ywarn-numeric-widen",
+          // Recommended additional warnings
+          "-Xlint",
           // Warn about unused things
           "-Ywarn-unused"
         )
+
+      case "2.13" => Seq("-Xlint")
+
+      case _ => Seq.empty[String]
     }),
     // Make a release
     release := {

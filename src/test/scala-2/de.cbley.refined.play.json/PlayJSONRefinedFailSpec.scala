@@ -17,25 +17,19 @@
 package de.cbley.refined.play.json
 
 import eu.timepit.refined.auto._
-import eu.timepit.refined.numeric.{Negative, Positive}
+import eu.timepit.refined.numeric.Positive
 import eu.timepit.refined.api.Refined
-import eu.timepit.refined.scalacheck.numeric._
-import _root_.play.api.libs.json.{JsNumber, JsSuccess, Json}
-import play.api.libs.json.JsError
+import _root_.play.api.libs.json.Json
 import org.scalacheck.Prop._
 import org.scalacheck.Properties
+import shapeless.test.illTyped
 
-class PlayJSONRefinedSpec extends Properties("PlayJSONReadsWrites") {
-  property("reads success") = forAll { (n: Int Refined Positive) =>
-    Json.fromJson[Int Refined Positive](JsNumber(BigDecimal(n))) ?= JsSuccess(n)
-  }
-
-  property("reads failure") = forAll { (n: Int Refined Negative) =>
-    Json.fromJson[Int Refined Positive](JsNumber(BigDecimal(n))) ?=
-      JsError(s"Predicate failed: ($n > 0).")
-  }
-
-  property("writes success") = forAll { (n: Int Refined Positive) =>
-    Json.toJson[Int Refined Positive](n) ?= JsNumber(BigDecimal(n))
+class PlayJSONRefinedFailSpec extends Properties("PlayJSONWrites") {
+  property("writes failure") = secure {
+    illTyped(
+      """Json.toJson[Int Refined Positive](-10)""",
+      """Predicate failed.*"""
+    )
+    true
   }
 }
