@@ -25,17 +25,12 @@ import play.api.libs.json.JsError
 import org.scalacheck.Prop._
 import org.scalacheck.Properties
 
-class PlayJSONRefinedSpec extends Properties("PlayJSONReadsWrites") {
-  property("reads success") = forAll { (n: Int Refined Positive) =>
-    Json.fromJson[Int Refined Positive](JsNumber(BigDecimal(n))) ?= JsSuccess(n)
-  }
-
-  property("reads failure") = forAll { (n: Int Refined Negative) =>
-    Json.fromJson[Int Refined Positive](JsNumber(BigDecimal(n))) ?=
-      JsError(s"Predicate failed: ($n > 0).")
-  }
-
-  property("writes success") = forAll { (n: Int Refined Positive) =>
-    Json.toJson[Int Refined Positive](n) ?= JsNumber(BigDecimal(n))
+class PlayJSONRefinedFailSpec extends Properties("PlayJSONWrites") {
+  property("writes failure") = secure {
+    scala.compiletime.testing
+      .typeCheckErrors(
+        """Json.toJson[Int Refined Positive](-10)"""
+      )
+      .nonEmpty
   }
 }
