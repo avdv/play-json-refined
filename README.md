@@ -7,7 +7,7 @@
 [Play JSON][] Reads/Writes instances for [refined][] types. 
 In other words, this library let’s you convert refined types to and from JSON.
 
-[Play JSON]: https://www.playframework.com/documentation/2.5.x/ScalaJson
+[Play JSON]: https://www.playframework.com/documentation/2.8.x/ScalaJson
 [refined]: https://github.com/fthomas/refined
 
 ## Installation
