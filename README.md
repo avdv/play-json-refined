@@ -2,7 +2,7 @@
 
 [![Bintray](https://img.shields.io/bintray/v/cbley/maven/play-json-refined)](https://bintray.com/cbley/maven/play-json-refined/#)
 [![Apache 2.0 license](https://img.shields.io/github/license/avdv/play-json-refined)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Travis master build Status](https://img.shields.io/travis/com/avdv/play-json-refined)](https://travis-ci.com/avdv/play-json-refined)
+![Github workflow status](https://github.com/avdv/play-json-refined/actions/workflows/test.yml/badge.svg?branch=master)
 
 [Play JSON][] Reads/Writes instances for [refined][] types. 
 In other words, this library let’s you convert refined types to and from JSON.
