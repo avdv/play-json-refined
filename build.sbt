@@ -47,9 +47,9 @@ lazy val root = (project in file("."))
       Seq(
         "com.typesafe.play" %% "play-json" % (if (isScala3) "2.10.0-RC2"
                                               else "2.9.0"),
-        "eu.timepit" %% "refined" % "0.9.21",
+        "eu.timepit" %% "refined" % "0.9.22",
         "org.scalacheck" %% "scalacheck" % "1.15.3" % Test,
-        "eu.timepit" %% "refined-scalacheck" % "0.9.21" % Test
+        "eu.timepit" %% "refined-scalacheck" % "0.9.22" % Test
       )
     },
     // Compiler flags.
