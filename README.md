@@ -1,6 +1,5 @@
 # play-json-refined
 
-[![Bintray](https://img.shields.io/bintray/v/cbley/maven/play-json-refined)](https://bintray.com/cbley/maven/play-json-refined/#)
 [![Apache 2.0 license](https://img.shields.io/github/license/avdv/play-json-refined)](http://www.apache.org/licenses/LICENSE-2.0)
 ![Github workflow status](https://github.com/avdv/play-json-refined/actions/workflows/test.yml/badge.svg?branch=master)
 
@@ -18,7 +17,7 @@ Add the following to your `build.sbt`:
 libraryDependencies += "de.cbley" %% "play-json-refined" % "<version>"
 ```
 
-Replace `<version>` with the desired version (see Bintray badge above).
+Replace `<version>` with the desired version, see https://mvnrepository.com/artifact/de.cbley/play-json-refined.
 
 ## Usage
 
