@@ -1,7 +1,7 @@
-addCommandAlias("compileAll", "; compile; test:compile")
-addCommandAlias("headerCheckAll", "; headerCheck; test:headerCheck")
+addCommandAlias("compileAll", "; compile; Test/compile")
+addCommandAlias("headerCheckAll", "; headerCheck; Test/headerCheck")
 
-// Do-it-all command for Travis CI
+// Do-it-all command for CI
 val validateCommands = List(
   "clean",
   "headerCheckAll",
