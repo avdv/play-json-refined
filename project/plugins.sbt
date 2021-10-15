@@ -5,4 +5,4 @@ addSbtPlugin("de.heikoseeberger" % "sbt-header" % "5.6.0")
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.3")
 
 // Release to Sonatype
-addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.5.9")
+addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.5.10")
