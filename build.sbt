@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
     name := "play-json-refined",
     organization := "de.cbley",
     organizationName := "Claudio Bley",
-    crossScalaVersions := List("2.13.8", "2.12.15", "3.1.2"),
+    crossScalaVersions := List("2.13.8", "2.12.15", "3.1.3"),
     homepage := Some(url("https://github.com/avdv/play-json-refined")),
     licenses += "Apache-2.0" -> url(
       "http://www.apache.org/licenses/LICENSE-2.0"
@@ -47,9 +47,9 @@ lazy val root = (project in file("."))
       Seq(
         "com.typesafe.play" %% "play-json" % (if (isScala3) "2.10.0-RC6"
                                               else "2.9.2"),
-        "eu.timepit" %% "refined" % "0.9.29",
+        "eu.timepit" %% "refined" % "0.10.1",
         "org.scalacheck" %% "scalacheck" % "1.16.0" % Test,
-        "eu.timepit" %% "refined-scalacheck" % "0.9.29" % Test
+        "eu.timepit" %% "refined-scalacheck" % "0.10.1" % Test
       )
     },
     // Compiler flags.
