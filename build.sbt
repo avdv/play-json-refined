@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
     name := "play-json-refined",
     organization := "de.cbley",
     organizationName := "Claudio Bley",
-    crossScalaVersions := List("2.13.13", "2.12.18", "3.3.3"),
+    crossScalaVersions := List("2.13.13", "2.12.19", "3.3.3"),
     homepage := Some(url("https://github.com/avdv/play-json-refined")),
     licenses += "Apache-2.0" -> url(
       "http://www.apache.org/licenses/LICENSE-2.0"
