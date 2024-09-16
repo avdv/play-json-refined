@@ -48,7 +48,7 @@ lazy val root = (project in file("."))
         "com.typesafe.play" %% "play-json" % (if (isScala3) "2.10.6"
                                               else "2.9.2"),
         "eu.timepit" %% "refined" % "0.11.1",
-        "org.scalacheck" %% "scalacheck" % "1.18.0" % Test,
+        "org.scalacheck" %% "scalacheck" % "1.18.1" % Test,
         "eu.timepit" %% "refined-scalacheck" % "0.11.1" % Test
       )
     },
