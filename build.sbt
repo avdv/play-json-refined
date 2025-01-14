@@ -113,7 +113,9 @@ lazy val root = (project in file("."))
         case Some(m) =>
           IO.write(
             changelog,
-            m.before(0) + m.matched + s"\n\n## $newVersion – ${LocalDate.now().toString}" + m
+            m.before(
+              0
+            ) + m.matched + s"\n\n## $newVersion – ${LocalDate.now().toString}" + m
               .after(0)
           )
         case None =>
