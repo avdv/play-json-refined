@@ -45,7 +45,7 @@ lazy val root = (project in file("."))
       val isScala3 = scalaVersion.value.startsWith("3.")
 
       Seq(
-        "com.typesafe.play" %% "play-json" % (if (isScala3) "2.10.7"
+        "org.playframework" %% "play-json" % (if (isScala3) "3.0.5"
                                               else "2.9.2"),
         "eu.timepit" %% "refined" % "0.11.3",
         "org.scalacheck" %% "scalacheck" % "1.18.1" % Test,
