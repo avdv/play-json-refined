@@ -1,5 +1,5 @@
 // Automate file headers
-addSbtPlugin("de.heikoseeberger" % "sbt-header" % "5.10.0")
+addSbtPlugin("com.github.sbt" % "sbt-header" % "5.11.0")
 
 // Code formatting
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.5.6")
