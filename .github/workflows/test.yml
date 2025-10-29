@@ -19,7 +19,7 @@ jobs:
         java-version: '11'
     - uses: sbt/setup-sbt@v1
     - name: Coursier cache
-      uses: coursier/cache-action@v6
+      uses: coursier/cache-action@v7
     - name: Build and test
       run: |
         sbt -v -Dfile.encoding=UTF-8 +validate
