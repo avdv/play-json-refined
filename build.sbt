@@ -64,7 +64,7 @@ lazy val root = (project in file("."))
       // Enable additional warnings about assumptions in the generated code
       "-unchecked",
       // Fail compilation on warnings
-      "-Xfatal-warnings"
+      "-Werror"
     ) ++ (scalaBinaryVersion.value match {
       case "2.12" =>
         Seq(
